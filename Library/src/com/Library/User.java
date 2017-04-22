@@ -3,7 +3,7 @@ package com.Library;
 /**
  * Created by Khandady on 3/31/2017.
  */
-public class User {
+public class User implements RequestObserver {
     protected String username;
     protected String name;
     protected String password;
@@ -72,4 +72,10 @@ public class User {
         String a = "something";
         return a;
     }
+
+	@Override
+	public void update() {
+		// TODO
+		
+	}
 }
