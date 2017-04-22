@@ -74,8 +74,8 @@ public class User implements RequestObserver {
     }
 
 	@Override
-	public void update() {
-		// TODO
+	public void update(String medianame) {
+		System.out.println("A new media is requested: " + medianame);
 		
 	}
 }

@@ -21,16 +21,23 @@ public class Requests implements RequestSubject{
 
 	@Override
 	public void notifyAllUsers() {
-		// TODO Auto-generated method stub
+		for(User ur : observers) {
+			System.out.println("Notifying subcribers");
+			ur.update(this.viewRequests());
+		}
 		
 	}
 
-	public HashSet<String> getMediaRequests() {
-		return mediaRequests;
+	public String viewRequests() {
+		return mediaRequests.toString();
 	}
 
-	public void addMediaRequests() {
-		//todo
+	public void addMediaRequests(String medianame) {
+		mediaRequests.add(medianame);
+	}
+	
+	public void removeRequest(String medianame) {
+		mediaRequests.remove(medianame);
 	}
 
 }
