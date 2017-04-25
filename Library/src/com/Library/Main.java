@@ -4,6 +4,9 @@ import java.sql.*;
 public class Main {
 
     public static void main(String[] args) {
+    	
+    	new RegistrationForm();
+    	/*
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library","root", "admin");
@@ -18,7 +21,7 @@ public class Main {
 
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = myConnection.prepareStatement(query);
-            preparedStmt.setInt (1, 2);
+            preparedStmt.setInt (1, 3);
             preparedStmt.setString (2, "username");
             preparedStmt.setString   (3, "name2");
             preparedStmt.setString(4, "password2");
@@ -26,9 +29,9 @@ public class Main {
             preparedStmt.setString    (6, "408");
             preparedStmt.setString    (7, "Boulder");
             preparedStmt.execute();
-            */
+            
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 }
