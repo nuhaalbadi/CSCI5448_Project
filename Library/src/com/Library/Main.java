@@ -5,7 +5,11 @@ public class Main {
 
     public static void main(String[] args) {
     	
-    	new RegistrationForm();
+    	//new RegistrationForm();
+    	//new LoginForm();
+    	
+    	LoginForm login = new LoginForm();
+    	login.setVisible(true);
     	/*
         try {
             Class.forName("com.mysql.jdbc.Driver");
