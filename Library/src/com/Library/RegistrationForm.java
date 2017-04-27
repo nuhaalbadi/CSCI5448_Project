@@ -104,7 +104,7 @@ package com.Library;
 	               {
 	                	 Class.forName("com.mysql.jdbc.Driver");
 	                     Connection myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library","root", "admin");
-	                     String query = " insert into user (username, name, password, email, phoneNo, address)" + " values (?, ?, ?, ?, ?, ?)";
+	                     String query = " insert into user (username, name, password, email, phoneNo, address, user_type)" + " values (?, ?, ?, ?, ?, ?, ?)";
 	                     PreparedStatement preparedStmt = myConnection.prepareStatement(query);
 	                     preparedStmt.setString (1, s1);
 	                     preparedStmt.setString (2, s2);
@@ -112,11 +112,14 @@ package com.Library;
 	                     preparedStmt.setString (4, s5);
 	                     preparedStmt.setString (5, s6);
 	                     preparedStmt.setString (6, s7);
+	                     preparedStmt.setString (7, "C"); // set user type as C = customer  
 	                     preparedStmt.execute();
 	                    x++;
 	                    if (x > 0) 
 	                    {
-	                        JOptionPane.showMessageDialog(btn1, "Data Saved Successfully");
+	                        JOptionPane.showMessageDialog(btn1, "User Created Successfully");
+	    	                new LoginForm();
+	    	                setVisible(false);
 	                    }
 	                }
 	          catch (Exception ex) 
@@ -141,11 +144,7 @@ package com.Library;
 	            tf7.setText("");
 	        }
 	    } 
-	    /*
-	    public static void main(String args[])
-	   {
-	        new RegistrationForm();
-	    }*/
+	
 	}
 
 
