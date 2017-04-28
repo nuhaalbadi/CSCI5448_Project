@@ -6,24 +6,24 @@ import java.util.HashSet;
 public class Requests implements RequestSubject{
 
 	private HashSet<String> mediaRequests = new HashSet<String>();
-	private ArrayList<User> observers = new ArrayList<User>();
+	private ArrayList<RequestObserver> observers = new ArrayList<RequestObserver>();
 	@Override
-	public void addUser(User user) {
-		observers.add(user);
+	public void addUser(RequestObserver observer) {
+		observers.add(observer);
 		
 	}
 
 	@Override
-	public void removeUser(User user) {
-		observers.remove(user);
+	public void removeUser(RequestObserver observer) {
+		observers.remove(observer);
 		
 	}
 
 	@Override
 	public void notifyAllUsers() {
-		for(User ur : observers) {
+		for(RequestObserver ob : observers) {
 			System.out.println("Notifying subcribers");
-			ur.update(this.viewRequests());
+			ob.update(this.viewRequests());
 		}
 		
 	}

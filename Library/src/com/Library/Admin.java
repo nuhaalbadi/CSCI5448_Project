@@ -3,7 +3,7 @@ package com.Library;
 /**
  * Created by Khandady on 3/31/2017.
  */
-public class Admin extends User {
+public class Admin extends User implements RequestObserver {
     private int adminID;
 
     private int getAdminID(){
@@ -24,4 +24,9 @@ public class Admin extends User {
     public int viewAdminInfo(int adminID){
         return adminID;
     }
+	@Override
+	public void update(String medianame) {
+		System.out.println("A new media is requested: " + medianame);
+		
+	}
 }

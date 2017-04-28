@@ -3,7 +3,7 @@ package com.Library;
 /**
  * Created by Khandady on 3/31/2017.
  */
-public class User implements RequestObserver {
+public class User {
     protected String username;
     protected String name;
     protected String password;
@@ -73,9 +73,4 @@ public class User implements RequestObserver {
         return a;
     }
 
-	@Override
-	public void update(String medianame) {
-		System.out.println("A new media is requested: " + medianame);
-		
-	}
 }
