@@ -6,7 +6,7 @@ import java.awt.event.*;
 import java.sql.*;
  
 public class AdminPortal extends JFrame implements ActionListener {
-	JButton btn1;
+	JButton btn1, btn2;
 	JLabel l1;
 	
 	AdminPortal()
@@ -23,12 +23,16 @@ public class AdminPortal extends JFrame implements ActionListener {
         
         btn1 = new JButton("Add New Librarian");
         btn1.addActionListener(this);
+        btn2 = new JButton("Add New Media");
+        btn2.addActionListener(this);
         
         l1.setBounds(80, 30, 400, 30);
         btn1.setBounds(300, 70, 150, 30);
+        btn2.setBounds(300, 110, 150, 30);
         
         add(l1);
         add(btn1);
+        add(btn2);
 		
 	}
 	
@@ -39,6 +43,11 @@ public class AdminPortal extends JFrame implements ActionListener {
         	  new AddLibrarian();
         	  setVisible(false);
         }
+        else if (e.getSource() == btn2)
+        {
+       	  new AddMedia();
+       	  setVisible(false);
+       }
     } 
 
 
