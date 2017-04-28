@@ -41,8 +41,8 @@ public class LoginForm extends JFrame implements ActionListener
         l3.setBounds(80, 110, 200, 30);
         tf1.setBounds(300, 70, 200, 30);
         p1.setBounds(300, 110, 200, 30);
-        btn1.setBounds(300, 370, 100, 30);
-        btn2.setBounds(400, 370, 100, 30);
+        btn1.setBounds(300, 160, 100, 30);
+        btn2.setBounds(400, 160, 100, 30);
  
         add(l1);
         add(l2);
@@ -68,18 +68,26 @@ public class LoginForm extends JFrame implements ActionListener
                 	 Class.forName("com.mysql.jdbc.Driver");
                      Connection myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library","root", "admin");
                      PreparedStatement preparedStmt = myConnection.prepareStatement("select * from user where username=? and password=?");
-                
+                 
                      preparedStmt.setString (1,username);
                      preparedStmt.setString (2,password);
                      ResultSet rs=preparedStmt.executeQuery();
                      if(rs.next())
                      {
-                    	 JOptionPane.showMessageDialog(btn1, "Username and Password correct");
-                        
+                    	 if(rs.getString(8).equals("A")) // if user is admin
+                    		 {
+                    		  new AdminPortal();
+                    		 setVisible(false);
+                    		 }
+                    	 else //user is customer or librarian #TODO
+                    	 {
+                    		 JOptionPane.showMessageDialog(btn1, "username and password are correct");
+                    		 }
+
                      }
                      else
                      {
-                    	 JOptionPane.showMessageDialog(btn1, "invalid username and password");
+                    	 JOptionPane.showMessageDialog(btn1, "invalid username or password");
                      }
                 }
           catch (Exception ex) 
