@@ -1,7 +1,7 @@
 package com.Library;
 
-
 import java.awt.*;
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.*;
 import java.awt.event.*;
@@ -19,7 +19,7 @@ public class PaymentView {
         JButton r = new JButton("Return");
         JTable table=new JTable();
         JScrollPane pane=new JScrollPane(table);
-
+        double total = 0.00;
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library","root", "admin");
@@ -29,16 +29,20 @@ public class PaymentView {
             int columns = mdt.getColumnCount();
             Vector columnNames = new Vector();
             Vector data = new Vector();
-            for (int col = 1; col <= columns; col++){
+            for (int col = 2; col <= columns; col++){
                 columnNames.addElement(mdt.getColumnName(col) );
             }
             while(res.next()){
                 Vector rows = new Vector(columns);
-                for (int col = 1; col <= columns; col++){
+                for (int col = 2; col <= columns; col++){
                     rows.addElement( res.getObject(col) );
+                    if(col == 3){
+                        total += Double.parseDouble(" " + res.getObject(col));
+                    }
                 }
                 data.addElement(rows);
             }
+
             DefaultTableModel list=new DefaultTableModel(data, columnNames);
             table.setModel(list);
         }
@@ -47,12 +51,14 @@ public class PaymentView {
             JOptionPane.showMessageDialog(b,"invalid username or password");
         }
 
+        JLabel t = new JLabel("Total = $" + String.format("%.2f",total));
         JFrame j = new JFrame();
         j.setLayout(null);
         title.setBounds(10,10,100,20);
         q.setBounds(150,270,180,20);
         b.setBounds(150,300,80,20);
         r.setBounds(250,300,80,20);
+        t.setBounds(150,250,80,20);
         pane.setBounds(10,30,500,170);
         pane.setVisible(false);
         j.add(title);
@@ -60,6 +66,7 @@ public class PaymentView {
         j.add(pane);
         j.add(q);
         j.add(r);
+        j.add(t);
         pane.setVisible(true);
         j.setSize(600,500);
         j.setVisible(true);
