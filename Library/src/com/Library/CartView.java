@@ -1,7 +1,6 @@
 package com.Library;
 
 import java.awt.*;
-import java.math.BigDecimal;
 import java.sql.*;
 import java.util.*;
 import java.awt.event.*;
@@ -16,6 +15,7 @@ public class CartView {
         JLabel title=new JLabel("Shopping Cart:");
         JLabel q = new JLabel("Enter ISBN:");
         JButton b = new JButton("Add to Cart");
+        JButton d = new JButton("Delete from Cart");
         JButton r = new JButton("Return");
         JTextField ISBN=new JTextField(20);
         JTable table=new JTable();
@@ -49,7 +49,7 @@ public class CartView {
         }
         catch(Exception ex){
             System.out.println("Checkout Failed");
-            JOptionPane.showMessageDialog(b,"invalid username or password");
+            JOptionPane.showMessageDialog(b,"Checkout Failed");
         }
 
         JFrame j = new JFrame();
@@ -58,6 +58,7 @@ public class CartView {
         q.setBounds(100,250,180,20);
         b.setBounds(300,250,180,20);
         r.setBounds(250,300,80,20);
+        d.setBounds(300,270,180,20);
 
         ISBN.setBounds(200,250,80,20);
         pane.setBounds(10,30,500,170);
@@ -67,6 +68,7 @@ public class CartView {
         j.add(pane);
         j.add(q);
         j.add(r);
+        j.add(d);
         j.add(ISBN);
         pane.setVisible(true);
         j.setSize(600,500);
@@ -81,6 +83,30 @@ public class CartView {
 
         b.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
+                String isnum = ISBN.getText();
+                String title = " ";
+                String price = " ";
+                int userid = 2;
+                try{
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library","root", "admin");
+                    Statement st= myConnection.createStatement();
+                    ResultSet res=st.executeQuery("select * from book where ISBN ='"+isnum+"'");
+                    while(res.next()) {
+                        title = res.getString(1);
+                        price = res.getString(2);
+                    }
+                    if(title != " ") {
+                        Statement stmt = null;
+                        stmt = myConnection.createStatement();
+                        String sql = "INSERT INTO cart(userid,title,price) VALUES ('" + userid + "','" + title + "','" + price + "')";
+                        stmt.executeUpdate(sql);
+                    }
+                }
+                catch(Exception ex){
+                    System.out.println("Add Media Failed");
+                    JOptionPane.showMessageDialog(b,"Can't add media");
+                }
                 new CartView();
                 j.setVisible(false);
             }
