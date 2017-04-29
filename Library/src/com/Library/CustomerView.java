@@ -24,7 +24,7 @@ public class CustomerView extends JFrame implements ActionListener {
 
         btn1 = new JButton("Search Media");
         btn1.addActionListener(this);
-        btn2 = new JButton("Add Media");
+        btn2 = new JButton("Add to Cart");
         btn2.addActionListener(this);
         btn3 = new JButton("Checkout");
         btn3.addActionListener(this);
@@ -35,10 +35,12 @@ public class CustomerView extends JFrame implements ActionListener {
         btn1.setBounds(200, 70, 150, 30);
         btn2.setBounds(200, 110, 150, 30);
         btn3.setBounds(200, 150, 150, 30);
+        btn4.setBounds(200,190,150,30);
         add(l1);
         add(btn1);
         add(btn2);
         add(btn3);
+        add(btn4);
         setVisible(true);
     }
 
@@ -51,12 +53,12 @@ public class CustomerView extends JFrame implements ActionListener {
         }
         else if (e.getSource() == btn2)
         {
-            new AddMedia();
+            new CartView();
             setVisible(false);
         }
         else if (e.getSource() == btn3)
         {
-            //new Checkout();
+            new PaymentView();
             setVisible(false);
         }
         else if (e.getSource() == btn4)

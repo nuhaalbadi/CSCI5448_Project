@@ -4,12 +4,12 @@ import java.sql.*;
 public class Main {
 
     public static void main(String[] args) {
-    	
-    	//new RegistrationForm();
-    	//new LoginForm();
-    	
-    	LoginForm login = new LoginForm();
-    	login.setVisible(true);
+
+        //new RegistrationForm();
+        //new LoginForm();
+
+        LoginForm login = new LoginForm();
+        login.setVisible(true);
     	/*
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -19,10 +19,8 @@ public class Main {
             while(rs.next()) {
                 System.out.println(rs.getInt(1) + "  " + rs.getString(2) + "  " + rs.getString(3) + "  " + rs.getString(4) + "  " + rs.getString(5) + "  " + rs.getString(6) + "  " + rs.getString(7));
             }
-
             /* Write Code:
             String query = " insert into user (userID, username, name, password, email, phoneNo, address)" + " values (?, ?, ?, ?, ?, ?, ?)";
-
             // create the mysql insert preparedstatement
             PreparedStatement preparedStmt = myConnection.prepareStatement(query);
             preparedStmt.setInt (1, 3);
@@ -33,7 +31,7 @@ public class Main {
             preparedStmt.setString    (6, "408");
             preparedStmt.setString    (7, "Boulder");
             preparedStmt.execute();
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }*/

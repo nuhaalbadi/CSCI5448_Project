@@ -3,32 +3,32 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
- 
+
 public class AddLibrarian extends JFrame implements ActionListener  {
-	JLabel l1, l2, l3, l4, l5, l6, l7, l8;
+    JLabel l1, l2, l3, l4, l5, l6, l7, l8;
     JTextField tf1, tf2, tf5, tf6, tf7;
     JButton btn1, btn2;
     JPasswordField p1, p2;
- 
+
     AddLibrarian()
-     {
+    {
         setVisible(true);
-        setSize(600, 500); // window size 
+        setSize(600, 500); // window size
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Add Librarian Page");
- 
+
         l1 = new JLabel("Please fill in all fields");
         l1.setForeground(Color.red);
         l1.setFont(new Font("Serif", Font.BOLD, 20));
- 
+
         l2 = new JLabel("User Name:");
         l3 = new JLabel("Name:");
         l4 = new JLabel("Passowrd:");
         l5 = new JLabel("Retype Password:");
         l6 = new JLabel("Email:");
         l7 = new JLabel("Phone No.:");
-        l8 = new JLabel("Address:"); 
+        l8 = new JLabel("Address:");
         tf1 = new JTextField();
         tf2 = new JTextField();
         p1 = new JPasswordField();
@@ -36,10 +36,10 @@ public class AddLibrarian extends JFrame implements ActionListener  {
         tf5 = new JTextField();
         tf6 = new JTextField();
         tf7 = new JTextField();
- 
+
         btn1 = new JButton("Submit");
         btn2 = new JButton("Clear");
- 
+
         btn1.addActionListener(this);
         btn2.addActionListener(this);
         // Setting position of GUI components
@@ -60,7 +60,7 @@ public class AddLibrarian extends JFrame implements ActionListener  {
         tf7.setBounds(300, 310, 200, 30);
         btn1.setBounds(300, 370, 100, 30);
         btn2.setBounds(400, 370, 100, 30);
- 
+
         add(l1);
         add(l2);
         add(tf1);
@@ -79,60 +79,60 @@ public class AddLibrarian extends JFrame implements ActionListener  {
         add(btn1);
         add(btn2);
     }
- 
-    public void actionPerformed(ActionEvent e) 
-     {
+
+    public void actionPerformed(ActionEvent e)
+    {
         if (e.getSource() == btn1)
-         {
+        {
             int x = 0;
             String s1 = tf1.getText(); // username
             String s2 = tf2.getText(); // name
- 
+
             char[] s3 = p1.getPassword();
-            char[] s4 = p2.getPassword(); 
+            char[] s4 = p2.getPassword();
             String s8 = new String(s3); // password
             String s9 = new String(s4);
- 
+
             String s5 = tf5.getText(); //email
             String s6 = tf6.getText(); //phone
             String s7 = tf7.getText(); //address
-            if (s8.equals(s9)) // if password matches 
-           {
+            if (s8.equals(s9)) // if password matches
+            {
                 try
-               {
-                	 Class.forName("com.mysql.jdbc.Driver");
-                     Connection myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library","root", "admin");
-                     String query = " insert into user (username, name, password, email, phoneNo, address, user_type)" + " values (?, ?, ?, ?, ?, ?, ?)";
-                     PreparedStatement preparedStmt = myConnection.prepareStatement(query);
-                     preparedStmt.setString (1, s1);
-                     preparedStmt.setString (2, s2);
-                     preparedStmt.setString (3, s8);
-                     preparedStmt.setString (4, s5);
-                     preparedStmt.setString (5, s6);
-                     preparedStmt.setString (6, s7);
-                     preparedStmt.setString (7, "L"); // set user type as L = librarian  
-                     preparedStmt.execute();
+                {
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library","root", "admin");
+                    String query = " insert into user (username, name, password, email, phoneNo, address, user_type)" + " values (?, ?, ?, ?, ?, ?, ?)";
+                    PreparedStatement preparedStmt = myConnection.prepareStatement(query);
+                    preparedStmt.setString (1, s1);
+                    preparedStmt.setString (2, s2);
+                    preparedStmt.setString (3, s8);
+                    preparedStmt.setString (4, s5);
+                    preparedStmt.setString (5, s6);
+                    preparedStmt.setString (6, s7);
+                    preparedStmt.setString (7, "L"); // set user type as L = librarian
+                    preparedStmt.execute();
                     x++;
-                    if (x > 0) 
+                    if (x > 0)
                     {
                         JOptionPane.showMessageDialog(btn1, "Admin Successfully Added to the System");
                         new AdminPortal();
-    	                setVisible(false);
+                        setVisible(false);
                     }
                 }
-          catch (Exception ex) 
+                catch (Exception ex)
                 {
-        	        ex.printStackTrace();
+                    ex.printStackTrace();
 
                 }
             }
-          else // if password does not match 
-           {
+            else // if password does not match
+            {
                 JOptionPane.showMessageDialog(btn1, "Password Does Not Match");
-            } 
-        } 
-          else // the clear button was clicked 
-       {
+            }
+        }
+        else // the clear button was clicked
+        {
             tf1.setText("");
             tf2.setText("");
             p1.setText("");
@@ -141,6 +141,6 @@ public class AddLibrarian extends JFrame implements ActionListener  {
             tf6.setText("");
             tf7.setText("");
         }
-    } 
+    }
 
 }

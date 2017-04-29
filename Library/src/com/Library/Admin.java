@@ -24,9 +24,9 @@ public class Admin extends User implements RequestObserver {
     public int viewAdminInfo(int adminID){
         return adminID;
     }
-	@Override
-	public void update(String medianame) {
-		System.out.println("A new media is requested: " + medianame);
-		
-	}
+    @Override
+    public void update(String medianame) {
+        System.out.println("A new media is requested: " + medianame);
+
+    }
 }

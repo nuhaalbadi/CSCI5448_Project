@@ -4,32 +4,32 @@ import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
 public class AddMedia  extends JFrame implements ActionListener{
-	
-	JLabel l1, l2, l3, l4, l5, l6, l7, l8, l9;
+
+    JLabel l1, l2, l3, l4, l5, l6, l7, l8, l9;
     JTextField tf1, tf2, tf3, tf4,tf5, tf6, tf7, tf8;
     JButton btn1, btn2;
     JRadioButton rbtn1, rbtn2;
-   
-    
+
+
     AddMedia(){
-    	setVisible(true);
-        setSize(600, 500); // window size 
+        setVisible(true);
+        setSize(600, 500); // window size
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Add Media Page");
- 
+
         l1 = new JLabel("Please fill in all fields");
         l1.setForeground(Color.red);
         l1.setFont(new Font("Serif", Font.BOLD, 20));
- 
+
         l2 = new JLabel("Title:");
         l3 = new JLabel("Price:");
         l4 = new JLabel("Availability:");
         l5 = new JLabel("Author:");
         l6 = new JLabel("ISBN:");
         l7 = new JLabel("Publication Date:");
-        l8 = new JLabel("Publisher:"); 
-        l9 = new JLabel("Edition:"); 
+        l8 = new JLabel("Publisher:");
+        l9 = new JLabel("Edition:");
         tf1 = new JTextField();
         tf2 = new JTextField();
         tf3 = new JTextField();
@@ -38,12 +38,12 @@ public class AddMedia  extends JFrame implements ActionListener{
         tf6 = new JTextField();
         tf7 = new JTextField();
         tf8 = new JTextField();
- 
+
         btn1 = new JButton("Submit");
         btn2 = new JButton("Clear");
         rbtn1 = new JRadioButton("Book");
         rbtn2 = new JRadioButton("Journal");
-	
+
         btn1.addActionListener(this);
         btn2.addActionListener(this);
         rbtn1.addActionListener(this);
@@ -70,7 +70,7 @@ public class AddMedia  extends JFrame implements ActionListener{
         tf8.setBounds(300, 350, 200, 30);
         btn1.setBounds(300, 390, 100, 30);
         btn2.setBounds(400, 390, 100, 30);
- 
+
         add(l1);
         add(l2);
         add(tf1);
@@ -92,136 +92,136 @@ public class AddMedia  extends JFrame implements ActionListener{
         add(btn2);
         add(rbtn1);
         add(rbtn2);
-        
+
         rbtn1.setSelected(true);
     }
-    
-    public void actionPerformed(ActionEvent e) 
+
+    public void actionPerformed(ActionEvent e)
     {
-       if (e.getSource() == btn1 && rbtn1.isSelected() )
+        if (e.getSource() == btn1 && rbtn1.isSelected() )
         {
-           int x = 0;
-           String s1 = tf1.getText(); // title
-           String s2 = tf2.getText(); // price
-           String s3 = tf3.getText(); // availability
-           String s4 = tf4.getText(); // author
-           String s5 = tf5.getText(); //ISBN
-           String s6 = tf6.getText(); //publication date
-           String s7 = tf7.getText(); //publisher
-           String s8 = tf8.getText(); //edition
-     
-               try
-              {
-               	 Class.forName("com.mysql.jdbc.Driver");
-                    Connection myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library","root", "admin");
-                    String query = " insert into book (title, price, availability, author, ISBN, publicationDate, publisher, edition)" + " values (?, ?, ?, ?, ?, ?, ?, ?)";
-                    PreparedStatement preparedStmt = myConnection.prepareStatement(query);
-                    preparedStmt.setString (1, s1);
-                    preparedStmt.setString (2, s2);
-                    preparedStmt.setString (3, s3);
-                    preparedStmt.setString (4, s4);
-                    preparedStmt.setString (5, s5);
-                    preparedStmt.setString (6, s6);
-                    preparedStmt.setString (7, s7);
-                    preparedStmt.setString (8, s8);
-                    preparedStmt.execute();
-                   x++;
-                   if (x > 0) 
-                   {
-                       JOptionPane.showMessageDialog(btn1, "New Book Has Been Added  Successfully to the System");
-                       new AdminPortal();
-   	                   setVisible(false);
-                   }
-               }
-         catch (Exception ex) 
-               {
-       	        ex.printStackTrace();
+            int x = 0;
+            String s1 = tf1.getText(); // title
+            String s2 = tf2.getText(); // price
+            String s3 = tf3.getText(); // availability
+            String s4 = tf4.getText(); // author
+            String s5 = tf5.getText(); //ISBN
+            String s6 = tf6.getText(); //publication date
+            String s7 = tf7.getText(); //publisher
+            String s8 = tf8.getText(); //edition
 
-               }
-         
-       } 
-       else if (e.getSource() == btn1 && rbtn2.isSelected() )
-       {
-          int x = 0;
-          String s1 = tf1.getText(); // title
-          String s2 = tf2.getText(); // price
-          String s3 = tf3.getText(); // availability
-          String s4 = tf4.getText(); // publication date
-          String s5 = tf5.getText(); //ISSN
-          String s6 = tf6.getText(); //volume
-          String s7 = tf7.getText(); //issue
-         
-    
-              try
-             {
-              	 Class.forName("com.mysql.jdbc.Driver");
-                   Connection myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library","root", "admin");
-                   String query = " insert into journal (title, price, availability, publicationDate, ISSN, volume, issue)" + " values (?, ?, ?, ?, ?, ?, ?)";
-                   PreparedStatement preparedStmt = myConnection.prepareStatement(query);
-                   preparedStmt.setString (1, s1);
-                   preparedStmt.setString (2, s2);
-                   preparedStmt.setString (3, s3);
-                   preparedStmt.setString (4, s4);
-                   preparedStmt.setString (5, s5);
-                   preparedStmt.setString (6, s6);
-                   preparedStmt.setString (7, s7);
-                   preparedStmt.execute();
-                  x++;
-                  if (x > 0) 
-                  {
-                      JOptionPane.showMessageDialog(btn1, "New Journal Has Been Added  Successfully to the System");
-                      new AdminPortal();
-  	                   setVisible(false);
-                  }
-              }
-        catch (Exception ex) 
-              {
-      	        ex.printStackTrace();
+            try
+            {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library","root", "admin");
+                String query = " insert into book (title, price, availability, author, ISBN, publicationDate, publisher, edition)" + " values (?, ?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement preparedStmt = myConnection.prepareStatement(query);
+                preparedStmt.setString (1, s1);
+                preparedStmt.setString (2, s2);
+                preparedStmt.setString (3, s3);
+                preparedStmt.setString (4, s4);
+                preparedStmt.setString (5, s5);
+                preparedStmt.setString (6, s6);
+                preparedStmt.setString (7, s7);
+                preparedStmt.setString (8, s8);
+                preparedStmt.execute();
+                x++;
+                if (x > 0)
+                {
+                    JOptionPane.showMessageDialog(btn1, "New Book Has Been Added  Successfully to the System");
+                    new AdminPortal();
+                    setVisible(false);
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.printStackTrace();
 
-              }
-        
-      } 
-         else if (e.getSource() == btn2) // the clear button was clicked 
-      {
-        	 tf1.setText("");
-             tf2.setText("");
-             tf3.setText("");
-             tf4.setText("");
-             tf5.setText("");
-             tf6.setText("");
-             tf7.setText("");
-             tf8.setText("");
-       }
-         else if (e.getSource() == rbtn2) // Journal was clicked
-         {
-        	 rbtn1.setSelected(false);
-        	 l5.setText("Publication Date:");
-             l6.setText("ISSN:");
-             l7.setText("Volume:");
-             l8.setText("Issue:");
-             tf4.setText("");
-             tf5.setText("");
-             tf6.setText("");
-             tf7.setText("");
-             l9.setVisible(false);
-             tf8.setVisible(false);
-          }
-         else if (e.getSource() == rbtn1) // book was clicked
-         {
-        	 rbtn2.setSelected(false);
-        	 l5.setText("Author:");
-             l6.setText("ISBN:");
-             l7.setText("Publication Date:");
-             l8.setText("Publisher:");
-             l9.setText("Edition:");
-             tf4.setText("");
-             tf5.setText("");
-             tf6.setText("");
-             tf7.setText("");
-             tf8.setText("");
-             l9.setVisible(true);
-             tf8.setVisible(true);  
-          }
-   } 
+            }
+
+        }
+        else if (e.getSource() == btn1 && rbtn2.isSelected() )
+        {
+            int x = 0;
+            String s1 = tf1.getText(); // title
+            String s2 = tf2.getText(); // price
+            String s3 = tf3.getText(); // availability
+            String s4 = tf4.getText(); // publication date
+            String s5 = tf5.getText(); //ISSN
+            String s6 = tf6.getText(); //volume
+            String s7 = tf7.getText(); //issue
+
+
+            try
+            {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library","root", "admin");
+                String query = " insert into journal (title, price, availability, publicationDate, ISSN, volume, issue)" + " values (?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement preparedStmt = myConnection.prepareStatement(query);
+                preparedStmt.setString (1, s1);
+                preparedStmt.setString (2, s2);
+                preparedStmt.setString (3, s3);
+                preparedStmt.setString (4, s4);
+                preparedStmt.setString (5, s5);
+                preparedStmt.setString (6, s6);
+                preparedStmt.setString (7, s7);
+                preparedStmt.execute();
+                x++;
+                if (x > 0)
+                {
+                    JOptionPane.showMessageDialog(btn1, "New Journal Has Been Added  Successfully to the System");
+                    new AdminPortal();
+                    setVisible(false);
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.printStackTrace();
+
+            }
+
+        }
+        else if (e.getSource() == btn2) // the clear button was clicked
+        {
+            tf1.setText("");
+            tf2.setText("");
+            tf3.setText("");
+            tf4.setText("");
+            tf5.setText("");
+            tf6.setText("");
+            tf7.setText("");
+            tf8.setText("");
+        }
+        else if (e.getSource() == rbtn2) // Journal was clicked
+        {
+            rbtn1.setSelected(false);
+            l5.setText("Publication Date:");
+            l6.setText("ISSN:");
+            l7.setText("Volume:");
+            l8.setText("Issue:");
+            tf4.setText("");
+            tf5.setText("");
+            tf6.setText("");
+            tf7.setText("");
+            l9.setVisible(false);
+            tf8.setVisible(false);
+        }
+        else if (e.getSource() == rbtn1) // book was clicked
+        {
+            rbtn2.setSelected(false);
+            l5.setText("Author:");
+            l6.setText("ISBN:");
+            l7.setText("Publication Date:");
+            l8.setText("Publisher:");
+            l9.setText("Edition:");
+            tf4.setText("");
+            tf5.setText("");
+            tf6.setText("");
+            tf7.setText("");
+            tf8.setText("");
+            l9.setVisible(true);
+            tf8.setVisible(true);
+        }
+    }
 
 }

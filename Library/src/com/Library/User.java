@@ -72,5 +72,4 @@ public class User {
         String a = "something";
         return a;
     }
-
 }

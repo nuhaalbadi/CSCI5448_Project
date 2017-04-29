@@ -4,35 +4,35 @@ package com.Library;
  */
 public class ReturnRequest {
 
-	    private int returnRequestNo;
-	    private String returnDate;
-	    private String returnDetails;
-	    
-		public int getReturnRequestNo() {
-			return returnRequestNo;
-		}
-		public void setReturnRequestNo(int returnRequestNo) {
-			this.returnRequestNo = returnRequestNo;
-		}
-		public String getReturnDate() {
-			return returnDate;
-		}
-		public void setReturnDate(String returnDate) {
-			this.returnDate = returnDate;
-		}
-		public String getReturnDetails() {
-			return returnDetails;
-		}
-		public void setReturnDetails(String returnDetails) {
-			this.returnDetails = returnDetails;
-		}
-		
-		public int createReturnRequest() {
-			return 0 ;
-		}
-		
-		public void processRefund(int returnRequestNo) {
-			
-		}
+    private int returnRequestNo;
+    private String returnDate;
+    private String returnDetails;
+
+    public int getReturnRequestNo() {
+        return returnRequestNo;
+    }
+    public void setReturnRequestNo(int returnRequestNo) {
+        this.returnRequestNo = returnRequestNo;
+    }
+    public String getReturnDate() {
+        return returnDate;
+    }
+    public void setReturnDate(String returnDate) {
+        this.returnDate = returnDate;
+    }
+    public String getReturnDetails() {
+        return returnDetails;
+    }
+    public void setReturnDetails(String returnDetails) {
+        this.returnDetails = returnDetails;
+    }
+
+    public int createReturnRequest() {
+        return 0 ;
+    }
+
+    public void processRefund(int returnRequestNo) {
+
+    }
 
 }
