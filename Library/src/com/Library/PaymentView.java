@@ -58,7 +58,7 @@ public class PaymentView {
         q.setBounds(150,270,180,20);
         b.setBounds(150,300,80,20);
         r.setBounds(250,300,80,20);
-        t.setBounds(150,250,80,20);
+        t.setBounds(150,250,200,20);
         pane.setBounds(10,30,500,170);
         pane.setVisible(false);
         j.add(title);

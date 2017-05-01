@@ -57,7 +57,7 @@ public class CartView {
         title.setBounds(10,10,100,20);
         q.setBounds(100,250,180,20);
         b.setBounds(300,250,180,20);
-        r.setBounds(250,300,80,20);
+        r.setBounds(200,300,150,20);
         d.setBounds(300,270,180,20);
 
         ISBN.setBounds(200,250,80,20);

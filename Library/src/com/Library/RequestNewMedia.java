@@ -41,8 +41,8 @@ RequestNewMedia(){
         l3.setBounds(80, 110, 200, 30);
         tf1.setBounds(300, 70, 200, 30);
         tf2.setBounds(300, 110, 200, 30);
-        btn1.setBounds(300, 370, 100, 30);
-        btn2.setBounds(400, 370, 100, 30);
+        btn1.setBounds(200, 370, 150, 30);
+        btn2.setBounds(400, 370, 150, 30);
 
         add(l1);
         add(l2);

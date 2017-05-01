@@ -49,7 +49,7 @@ public class UpdateInfo {
         tf2.setBounds(300, 500, 200, 30);
         tf5.setBounds(300, 550, 200, 30);
         tf6.setBounds(300, 600, 200, 30);
-        pane.setBounds(10,70,500,170);
+        pane.setBounds(10,70,900,200);
         pane.setVisible(false);
         j.add(title);
         j.add(t);
@@ -66,7 +66,7 @@ public class UpdateInfo {
         j.add(l5);
         j.add(tf6);
         pane.setVisible(false);
-        j.setSize(1200,1000);
+        j.setSize(1100,900);
         j.setVisible(true);
 
         r.addActionListener(new ActionListener(){

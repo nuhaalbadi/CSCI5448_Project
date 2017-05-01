@@ -1,19 +1,29 @@
+
 package com.Library;
 
-import java.awt.*;
-import java.sql.*;
-import java.util.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.table.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.Statement;
+import java.util.Vector;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
-public class SearchCustomer {
-    JButton r;
-    SearchCustomer() {
-
-        JLabel title=new JLabel("Enter Name:");
-        JTextField t=new JTextField(20);
-        JButton b = new JButton("Search");
+/**
+ *
+ * @author Mukund Madhusudan Atre
+ */
+public class RequestsView {
+    RequestsView() {
+       
         JButton r = new JButton("Return");
         JTable table=new JTable();
         JScrollPane pane=new JScrollPane(table);
@@ -21,15 +31,9 @@ public class SearchCustomer {
         JFrame j = new JFrame();
         j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         j.setLayout(null);
-        title.setBounds(10,10,100,20);
-        t.setBounds(120,10,100,20);
-        b.setBounds(250,10,120,20);
-        r.setBounds(250,400,120,20);
+        r.setBounds(400,400,120,20);
         pane.setBounds(10,70,900,200);
         pane.setVisible(false);
-        j.add(title);
-        j.add(t);
-        j.add(b);
         j.add(pane);
         j.add(r);
         pane.setVisible(false);
@@ -43,14 +47,11 @@ public class SearchCustomer {
             }
         });
 
-        b.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                String name=t.getText();
                 try{
                     Class.forName("com.mysql.jdbc.Driver");
                     Connection myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library","root", "admin");
                     Statement st= myConnection.createStatement();
-                    ResultSet res=st.executeQuery("select * from user where name='"+name+"'");
+                    ResultSet res=st.executeQuery("select * from mediarequests");
                     ResultSetMetaData mdt = res.getMetaData();
                     int columns = mdt.getColumnCount();
                     Vector columnNames = new Vector();
@@ -73,8 +74,5 @@ public class SearchCustomer {
                     System.out.println("Search Failed");
                 }
             }
-        });
     }
-
-
-}
+    
