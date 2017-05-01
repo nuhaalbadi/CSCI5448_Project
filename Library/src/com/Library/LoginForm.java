@@ -83,7 +83,13 @@ public class LoginForm extends JFrame implements ActionListener
                     else if(rs.getString(8).equals("C")){
                         new CustomerView();
                         setVisible(false);
-                    }else //user is customer or librarian #TODO
+                    }
+                    else if(rs.getString(8).equals("L"))
+                    {
+                        new LibrarianPortal();
+                        setVisible(false);
+                    }
+                    else //user is customer or librarian #TODO
                     {
                         JOptionPane.showMessageDialog(btn1, "username and password are correct");
                     }
