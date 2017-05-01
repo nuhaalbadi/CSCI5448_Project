@@ -3,7 +3,7 @@ package com.Library;
 
 /**
  *
- * @author mmsatre
+ * @author Mukund Madhusudan Atre
  */
 
 import java.awt.*;
@@ -29,6 +29,7 @@ public class UpdateInfo {
         tf6 = new JTextField();
         JButton b = new JButton("Search");
         JButton r = new JButton("Return");
+        JButton sav = new JButton("Update");
         JTable table=new JTable();
         JScrollPane pane=new JScrollPane(table);
 
@@ -37,8 +38,9 @@ public class UpdateInfo {
         j.setLayout(null);
         title.setBounds(10,10,100,20);
         t.setBounds(120,10,100,20);
-        b.setBounds(250,10,80,20);
-        r.setBounds(250,700,80,20);
+        b.setBounds(250,10,120,20);
+        r.setBounds(550,700,120,20);
+        sav.setBounds(150, 700, 120, 20);
         l2.setBounds(80, 450, 200, 30);
         l3.setBounds(80, 500, 200, 30);
         l4.setBounds(80, 550, 200, 30);
@@ -52,6 +54,7 @@ public class UpdateInfo {
         j.add(title);
         j.add(t);
         j.add(b);
+        j.add(sav);
         j.add(pane);
         j.add(r);
         j.add(l2);
@@ -103,6 +106,39 @@ public class UpdateInfo {
                     System.out.println("Search Failed");
                 }
             }
+        });
+        sav.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String name = t.getText();
+            String newname = "";
+            newname = tf1.getText();
+            String newmail = tf2.getText();
+            String newnum = tf5.getText();
+            String newadd = tf6.getText();
+            System.out.println(newname);
+            
+            if(tf1.getText().trim().isEmpty()||tf2.getText().trim().isEmpty()||tf5.getText().trim().isEmpty()||tf6.getText().trim().isEmpty()){
+                JOptionPane.showMessageDialog(sav, "Fields cannot be left Empty");
+                System.out.println("entered");
+            }
+            else{
+                System.out.println("skipped"+newmail+newnum+newadd+"hey");
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library","root", "admin");
+                PreparedStatement pst = myConnection.prepareStatement("update user set name='"+newname+"',email='"+newmail+"',phoneNo='"+newnum+"',address='"+newadd+"' where name='"+name+"'");
+                pst.execute();
+            }
+            catch(Exception ex) {
+                System.out.println("Search Failed");
+            }
+            }
+        }
+            
+            
+            
+            
         });
     }
     

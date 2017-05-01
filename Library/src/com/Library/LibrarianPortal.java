@@ -31,10 +31,10 @@ LibrarianPortal() {
         btn4.addActionListener(this);
 
         l1.setBounds(80, 30, 400, 30);
-        btn1.setBounds(300, 70, 150, 30);
-        btn2.setBounds(300, 110, 150, 30);
-        btn3.setBounds(300, 150, 150, 30);
-        btn4.setBounds(300,190,150,30);
+        btn1.setBounds(150, 70, 300, 30);
+        btn2.setBounds(150, 110, 300, 30);
+        btn3.setBounds(150, 150, 300, 30);
+        btn4.setBounds(150,190,300,30);
 
         add(l1);
         add(btn1);

@@ -30,8 +30,8 @@ public class LoginForm extends JFrame implements ActionListener
         tf1 = new JTextField();
         p1 = new JPasswordField();
 
-        btn1 = new JButton("Submit");
-        btn2 = new JButton("New user?");
+        btn1 = new JButton("Login");
+        btn2 = new JButton("Create Account");
 
         btn1.addActionListener(this);
         btn2.addActionListener(this);
@@ -41,8 +41,8 @@ public class LoginForm extends JFrame implements ActionListener
         l3.setBounds(80, 110, 200, 30);
         tf1.setBounds(300, 70, 200, 30);
         p1.setBounds(300, 110, 200, 30);
-        btn1.setBounds(300, 160, 100, 30);
-        btn2.setBounds(400, 160, 100, 30);
+        btn1.setBounds(200, 160, 100, 30);
+        btn2.setBounds(300, 160, 150, 30);
 
         add(l1);
         add(l2);
