@@ -10,7 +10,7 @@ import java.sql.*;
  */
 
 public class CustomerView extends JFrame implements ActionListener {
-    JButton btn1, btn2, btn3, btn4;
+    JButton btn1, btn2, btn3, btn4,btn5;
     JLabel l1;
     CustomerView() {
         setSize(600, 500); // window size
@@ -30,17 +30,21 @@ public class CustomerView extends JFrame implements ActionListener {
         btn3.addActionListener(this);
         btn4 = new JButton("Logout");
         btn4.addActionListener(this);
+        btn5 =new JButton("Request New Media");
+        btn5.addActionListener(this);
 
-        l1.setBounds(200, 30, 400, 30);
-        btn1.setBounds(200, 70, 150, 30);
-        btn2.setBounds(200, 110, 150, 30);
-        btn3.setBounds(200, 150, 150, 30);
-        btn4.setBounds(200,190,150,30);
+        l1.setBounds(150, 30, 400, 30);
+        btn1.setBounds(175, 70, 250, 30);
+        btn2.setBounds(175, 110, 250, 30);
+        btn3.setBounds(175, 150, 250, 30);
+        btn4.setBounds(175,190,250,30);
+        btn5.setBounds(175, 230, 250, 30);
         add(l1);
         add(btn1);
         add(btn2);
         add(btn3);
         add(btn4);
+        add(btn5);
         setVisible(true);
     }
 
@@ -64,6 +68,10 @@ public class CustomerView extends JFrame implements ActionListener {
         else if (e.getSource() == btn4)
         {
             new LoginForm();
+            setVisible(false);
+        }
+        else if (e.getSource() == btn5) {
+            new RequestNewMedia();
             setVisible(false);
         }
     }
