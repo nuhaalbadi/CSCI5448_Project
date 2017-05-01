@@ -37,8 +37,8 @@ public class CustomerView extends JFrame implements ActionListener {
         btn1.setBounds(175, 70, 250, 30);
         btn2.setBounds(175, 110, 250, 30);
         btn3.setBounds(175, 150, 250, 30);
-        btn4.setBounds(175,190,250,30);
-        btn5.setBounds(175, 230, 250, 30);
+        btn5.setBounds(175,190,250,30);
+        btn4.setBounds(175, 230, 250, 30);
         add(l1);
         add(btn1);
         add(btn2);
