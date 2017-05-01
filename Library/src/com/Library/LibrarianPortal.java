@@ -15,7 +15,7 @@ LibrarianPortal() {
         setSize(600, 500); // window size
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setTitle("Admin Portal");
+        setTitle("Librarian Portal");
 
         l1 = new JLabel("Library Checkout System");
         l1.setForeground(Color.blue);
