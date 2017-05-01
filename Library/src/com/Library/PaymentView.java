@@ -36,7 +36,7 @@ public class PaymentView {
                 Vector rows = new Vector(columns);
                 for (int col = 2; col <= columns; col++){
                     rows.addElement( res.getObject(col) );
-                    if(col == 3){
+                    if(col == 4){
                         total += Double.parseDouble(" " + res.getObject(col));
                     }
                 }

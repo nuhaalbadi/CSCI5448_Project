@@ -37,7 +37,7 @@ public class CartView {
                 Vector rows = new Vector(columns);
                 for (int col = 2; col <= columns; col++){
                     rows.addElement( res.getObject(col) );
-                    if(col == 3){
+                    if(col == 4){
                         total += Double.parseDouble(" " + res.getObject(col));
                     }
                 }
@@ -81,11 +81,36 @@ public class CartView {
             }
         });
 
+        d.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                String isnum = ISBN.getText();
+                int userid = 2;
+                try{
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library","root", "admin");
+                    if(isnum != " ") {
+                        Statement stmt = null;
+                        stmt = myConnection.createStatement();
+                        String sql = "DELETE FROM cart WHERE ISBN ='"+isnum+"'";
+                        stmt.executeUpdate(sql);
+                    }
+                }
+                catch(Exception ex){
+                    System.out.println("Add Media Failed");
+                    JOptionPane.showMessageDialog(b,"Can't add media");
+                }
+                new CartView();
+                j.setVisible(false);
+            }
+        });
+
+
         b.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 String isnum = ISBN.getText();
                 String title = " ";
                 String price = " ";
+                String ISBN = " ";
                 int userid = 2;
                 try{
                     Class.forName("com.mysql.jdbc.Driver");
@@ -95,11 +120,12 @@ public class CartView {
                     while(res.next()) {
                         title = res.getString(1);
                         price = res.getString(2);
+                        ISBN  = res.getString(5);
                     }
                     if(title != " ") {
                         Statement stmt = null;
                         stmt = myConnection.createStatement();
-                        String sql = "INSERT INTO cart(userid,title,price) VALUES ('" + userid + "','" + title + "','" + price + "')";
+                        String sql = "INSERT INTO cart(userid,ISBN,title,price) VALUES ('" + userid + "','" + ISBN + "','" + title + "','" + price + "')";
                         stmt.executeUpdate(sql);
                     }
                 }
