@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.Vector;
 
 public class AdminPortal extends JFrame implements ActionListener {
-    JButton btn1, btn2, btn3, btn4;
+    JButton btn1, btn2, btn3, btn4, btn5;
     JLabel l1,l2;
 
     AdminPortal()
@@ -70,19 +70,23 @@ public class AdminPortal extends JFrame implements ActionListener {
         btn3.addActionListener(this);
         btn4 = new JButton("Logout");
         btn4.addActionListener(this);
+        btn5 = new JButton("View Requests");
+        btn5.addActionListener(this);
 
-        l1.setBounds(80, 30, 400, 30);
-        l2.setBounds(300,250,400,30);
-        btn1.setBounds(300, 70, 150, 30);
-        btn2.setBounds(300, 110, 150, 30);
-        btn3.setBounds(300, 150, 150, 30);
-        btn4.setBounds(300,190,150,30);
+        l1.setBounds(150, 30, 400, 30);
+        l2.setBounds(150,250,400,30);
+        btn1.setBounds(175, 70, 150, 30);
+        btn2.setBounds(175, 110, 150, 30);
+        btn3.setBounds(175, 150, 150, 30);
+        btn4.setBounds(175,190,150,30);
+        btn5.setBounds(175,190,200,30);
 
         add(l1);
         add(btn1);
         add(btn2);
         add(btn3);
         add(btn4);
+        add(btn5);
         add(l2);
         setVisible(true);
     }
@@ -107,6 +111,11 @@ public class AdminPortal extends JFrame implements ActionListener {
         else if (e.getSource() == btn4) // logout
         {
             new LoginForm();
+            setVisible(false);
+        }
+        else if (e.getSource() == btn5)
+        {
+            new RequestsView();
             setVisible(false);
         }
     }
