@@ -11,6 +11,7 @@ import javax.swing.table.*;
 
 public class PaymentView {
     JButton r;
+    double total = 0.00;
     PaymentView() {
 
         JLabel title=new JLabel("Shopping Cart:");
@@ -19,7 +20,7 @@ public class PaymentView {
         JButton r = new JButton("Return");
         JTable table=new JTable();
         JScrollPane pane=new JScrollPane(table);
-        double total = 0.00;
+      
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library","root", "admin");
@@ -86,8 +87,7 @@ public class PaymentView {
                     Connection myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library","root", "admin");
                     Statement st= myConnection.createStatement();
                     String sql = "INSERT INTO order(userid,price) VALUES ('" + userid + "','" + total + "')";
-                    stmt.executeUpdate(sql);
-                    }
+                    st.executeUpdate(sql);
                 }
                 catch(Exception ex){
                     System.out.println("Add Order Failed");
