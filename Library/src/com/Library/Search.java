@@ -51,7 +51,7 @@ public class Search {
                     Class.forName("com.mysql.jdbc.Driver");
                     Connection myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library","root", "admin");
                     Statement st= myConnection.createStatement();
-                    ResultSet res=st.executeQuery("select * from book where title='"+name+"'");
+                    ResultSet res=st.executeQuery("select * from book where title like'%"+name+"%'");
                     ResultSetMetaData mdt = res.getMetaData();
                     int columns = mdt.getColumnCount();
                     Vector columnNames = new Vector();
