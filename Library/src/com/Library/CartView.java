@@ -17,6 +17,7 @@ public class CartView {
         JButton b = new JButton("Add to Cart");
         JButton d = new JButton("Delete from Cart");
         JButton r = new JButton("Return");
+        JButton c = new JButton("Checkout");
         JTextField ISBN=new JTextField(20);
         JTable table=new JTable();
         JScrollPane pane=new JScrollPane(table);
@@ -56,9 +57,10 @@ public class CartView {
         j.setLayout(null);
         title.setBounds(10,10,100,20);
         q.setBounds(100,250,180,20);
-        b.setBounds(300,250,180,20);
+        b.setBounds(300,230,180,20);
         r.setBounds(200,300,150,20);
-        d.setBounds(300,270,180,20);
+        d.setBounds(300,250,180,20);
+        c.setBounds(300,270,180,20);
 
         ISBN.setBounds(200,250,80,20);
         pane.setBounds(10,30,500,170);
@@ -69,6 +71,7 @@ public class CartView {
         j.add(q);
         j.add(r);
         j.add(d);
+        j.add(c);
         j.add(ISBN);
         pane.setVisible(true);
         j.setSize(600,500);
@@ -80,7 +83,12 @@ public class CartView {
                 j.setVisible(false);
             }
         });
-
+        c.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+            	new PaymentView();
+                j.setVisible(false);
+            }
+        });
         d.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 String isnum = ISBN.getText();

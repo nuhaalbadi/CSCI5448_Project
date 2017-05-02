@@ -10,7 +10,7 @@ import java.sql.*;
  */
 
 public class CustomerView extends JFrame implements ActionListener {
-    JButton btn1, btn2, btn3, btn4,btn5;
+    JButton btn1, btn2, btn4,btn5;
     JLabel l1;
     CustomerView() {
         setSize(600, 500); // window size
@@ -26,8 +26,6 @@ public class CustomerView extends JFrame implements ActionListener {
         btn1.addActionListener(this);
         btn2 = new JButton("Add to Cart");
         btn2.addActionListener(this);
-        btn3 = new JButton("Checkout");
-        btn3.addActionListener(this);
         btn4 = new JButton("Logout");
         btn4.addActionListener(this);
         btn5 =new JButton("Request New Media");
@@ -36,13 +34,12 @@ public class CustomerView extends JFrame implements ActionListener {
         l1.setBounds(150, 30, 400, 30);
         btn1.setBounds(175, 70, 250, 30);
         btn2.setBounds(175, 110, 250, 30);
-        btn3.setBounds(175, 150, 250, 30);
-        btn5.setBounds(175,190,250,30);
-        btn4.setBounds(175, 230, 250, 30);
+       // btn3.setBounds(175, 150, 250, 30);
+        btn5.setBounds(175,150,250,30);
+        btn4.setBounds(175, 190, 250, 30);
         add(l1);
         add(btn1);
         add(btn2);
-        add(btn3);
         add(btn4);
         add(btn5);
         setVisible(true);
@@ -60,11 +57,7 @@ public class CustomerView extends JFrame implements ActionListener {
             new CartView();
             setVisible(false);
         }
-        else if (e.getSource() == btn3)
-        {
-            new PaymentView();
-            setVisible(false);
-        }
+
         else if (e.getSource() == btn4)
         {
             new LoginForm();
