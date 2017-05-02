@@ -20,11 +20,12 @@ public class Search {
         JScrollPane pane=new JScrollPane(table);
 
         JFrame j = new JFrame();
+        j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         j.setLayout(null);
         title.setBounds(10,10,100,20);
         t.setBounds(120,10,100,20);
-        b.setBounds(250,10,80,20);
-        r.setBounds(250,400,80,20);
+        b.setBounds(250,10,120,20);
+        r.setBounds(250,400,120,20);
         pane.setBounds(10,70,500,170);
         pane.setVisible(false);
         j.add(title);

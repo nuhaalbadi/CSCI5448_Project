@@ -14,8 +14,10 @@ public class RequestNewMedia extends JFrame implements ActionListener {
     JLabel l1, l2, l3;
     JTextField tf1, tf2;
     JButton btn1, btn2;
-RequestNewMedia(){
+    private String ss;
+RequestNewMedia(String str){
     setVisible(true);
+    ss = str;
     setSize(600, 500); // window size
     setLayout(null);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -72,10 +74,14 @@ RequestNewMedia(){
                     if (x > 0)
                     {
                         JOptionPane.showMessageDialog(btn1, "Media Requested!");
+                        if(ss=="c"){
+                        new CustomerView();
+                        setVisible(false);}
+                        else{
                         new LibrarianPortal();
-                        setVisible(false);
+                        setVisible(false);}  
+                        }
                     }
-                }
             catch (Exception ex)
                 {
                     ex.printStackTrace();

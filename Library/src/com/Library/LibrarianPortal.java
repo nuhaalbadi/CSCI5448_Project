@@ -53,7 +53,7 @@ LibrarianPortal() {
         }
         else if (ae.getSource() == btn2)
         {
-            new RequestNewMedia();
+            new RequestNewMedia("l");
             setVisible(false);
         }
         else if (ae.getSource() == btn3) 

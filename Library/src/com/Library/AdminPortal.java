@@ -74,11 +74,11 @@ public class AdminPortal extends JFrame implements ActionListener {
         btn5.addActionListener(this);
 
         l1.setBounds(150, 30, 400, 30);
-        l2.setBounds(150,250,400,30);
-        btn1.setBounds(175, 70, 150, 30);
-        btn2.setBounds(175, 110, 150, 30);
-        btn3.setBounds(175, 150, 150, 30);
-        btn4.setBounds(175,190,150,30);
+        l2.setBounds(150,300,400,30);
+        btn1.setBounds(175, 70, 200, 30);
+        btn2.setBounds(175, 110, 200, 30);
+        btn3.setBounds(175, 150, 200, 30);
+        btn4.setBounds(175,230,200,30);
         btn5.setBounds(175,190,200,30);
 
         add(l1);

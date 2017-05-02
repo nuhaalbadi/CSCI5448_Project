@@ -64,7 +64,7 @@ public class CustomerView extends JFrame implements ActionListener {
             setVisible(false);
         }
         else if (e.getSource() == btn5) {
-            new RequestNewMedia();
+            new RequestNewMedia("c");
             setVisible(false);
         }
     }
